@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', Helvetica, Arial, sans-serif">
+  <rect width="960" height="600" fill="#ffffff"/>
+  <defs>
+    <marker id="solid" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#374151"/></marker>
+    <marker id="dash" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker>
+    <marker id="red" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker>
+  </defs>
+  <text x="480" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#1f2937">온톨로지 — 입력된 사실에서 추론으로, 쓰기는 검증 후에</text>
+
+  <!-- Left: inference graph -->
+  <text x="60" y="76" font-size="15" font-weight="700" fill="#1f2937">A. "달콤크로플은 서울에 있다"는 어디에도 적혀 있지 않다</text>
+
+  <!-- nodes -->
+  <g font-size="13" text-anchor="middle">
+    <rect x="60" y="150" width="130" height="44" rx="22" fill="#fff7ed" stroke="#f59e0b" stroke-width="2"/>
+    <text x="125" y="177" fill="#7c2d12" font-weight="600">ex:달콤크로플</text>
+    <rect x="250" y="150" width="110" height="44" rx="22" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="305" y="177" fill="#1e3a8a" font-weight="600">ex:합정동</text>
+    <rect x="420" y="150" width="110" height="44" rx="22" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="475" y="177" fill="#1e3a8a" font-weight="600">ex:마포구</text>
+    <rect x="590" y="150" width="110" height="44" rx="22" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="645" y="177" fill="#1e3a8a" font-weight="600">ex:서울</text>
+    <rect x="60" y="260" width="130" height="40" rx="8" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="125" y="285" fill="#5b21b6" font-weight="600">ex:카페</text>
+    <rect x="250" y="260" width="130" height="40" rx="8" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="315" y="285" fill="#5b21b6" font-weight="600">ex:음식점</text>
+    <rect x="440" y="260" width="130" height="40" rx="8" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="505" y="285" fill="#5b21b6" font-weight="600">ex:장소</text>
+  </g>
+  <!-- input edges -->
+  <g stroke="#374151" stroke-width="2" font-size="11" fill="#374151">
+    <line x1="190" y1="172" x2="245" y2="172" marker-end="url(#solid)"/>
+    <text x="217" y="163" text-anchor="middle" stroke="none">위치함</text>
+    <line x1="360" y1="172" x2="415" y2="172" marker-end="url(#solid)"/>
+    <text x="387" y="163" text-anchor="middle" stroke="none">위치함</text>
+    <line x1="530" y1="172" x2="585" y2="172" marker-end="url(#solid)"/>
+    <text x="557" y="163" text-anchor="middle" stroke="none">위치함</text>
+    <line x1="125" y1="194" x2="125" y2="255" marker-end="url(#solid)"/>
+    <text x="150" y="228" text-anchor="middle" stroke="none">rdf:type</text>
+    <line x1="190" y1="280" x2="245" y2="280" marker-end="url(#solid)"/>
+    <text x="217" y="272" text-anchor="middle" stroke="none">subClassOf</text>
+    <line x1="380" y1="280" x2="435" y2="280" marker-end="url(#solid)"/>
+    <text x="407" y="272" text-anchor="middle" stroke="none">subClassOf</text>
+  </g>
+  <!-- inferred edges (dashed purple) -->
+  <g stroke="#7c3aed" stroke-width="2" stroke-dasharray="7 5" font-size="11" fill="#6d28d9">
+    <path d="M125,150 C 200,90 560,90 645,150" fill="none" marker-end="url(#dash)"/>
+    <text x="385" y="94" text-anchor="middle" stroke="none">위치함 (전이 관계 ×2)</text>
+    <path d="M305,150 C 380,110 560,110 640,150" fill="none" marker-end="url(#dash)"/>
+    <text x="470" y="143" text-anchor="middle" stroke="none">위치함 (전이 관계)</text>
+    <path d="M140,194 C 180,235 250,255 300,258" fill="none" marker-end="url(#dash)"/>
+    <text x="235" y="236" text-anchor="middle" stroke="none">type (타입 상속)</text>
+    <path d="M160,194 C 300,215 450,235 490,258" fill="none" marker-end="url(#dash)"/>
+  </g>
+  <g font-size="12">
+    <line x1="60" y1="330" x2="100" y2="330" stroke="#374151" stroke-width="2"/>
+    <text x="108" y="334" fill="#374151">입력된 사실 (ABox/TBox)</text>
+    <line x1="290" y1="330" x2="330" y2="330" stroke="#7c3aed" stroke-width="2" stroke-dasharray="7 5"/>
+    <text x="338" y="334" fill="#6d28d9">추론된 사실 — Proof(rule, premises) 기록 → explain()으로 거슬러 올라감</text>
+  </g>
+  <rect x="60" y="350" width="640" height="46" rx="8" fill="#f5f3ff" stroke="#c4b5fd"/>
+  <text x="380" y="369" text-anchor="middle" font-size="12" fill="#1f2937">질의 (?가게 rdf:type ex:음식점)(?가게 ex:위치함 ex:서울)(?가게 ex:평점 ?점수) + filter ≥ 4.5</text>
+  <text x="380" y="387" text-anchor="middle" font-size="12" fill="#6b7280">추론 전 0건 → 추론 후 1건 (달콤크로플 4.6).  규칙 7개를 새 사실이 안 나올 때까지 반복 = 고정점</text>
+
+  <!-- Right: validation -->
+  <rect x="720" y="60" width="210" height="336" rx="12" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="825" y="88" text-anchor="middle" font-size="15" font-weight="700" fill="#991b1b">B. 쓰기 검증</text>
+  <text x="825" y="108" text-anchor="middle" font-size="12" fill="#7f1d1d">commitIfConsistent(fact)</text>
+  <g font-size="12" fill="#1f2937">
+    <rect x="735" y="122" width="180" height="56" rx="6" fill="#ffffff" stroke="#fecaca"/>
+    <text x="825" y="142" text-anchor="middle">1. var trial = kb  (값 복사)</text>
+    <text x="825" y="160" text-anchor="middle">2. trial.add(fact); saturate</text>
+    <rect x="735" y="188" width="180" height="56" rx="6" fill="#ffffff" stroke="#fecaca"/>
+    <text x="825" y="208" text-anchor="middle">3. Validator.contradictions</text>
+    <text x="825" y="226" text-anchor="middle">   (owl:disjointWith 검사)</text>
+    <rect x="735" y="254" width="180" height="40" rx="6" fill="#ffffff" stroke="#fecaca"/>
+    <text x="825" y="279" text-anchor="middle">4. 모순 없음 → kb = trial</text>
+  </g>
+  <text x="825" y="318" text-anchor="middle" font-size="12" fill="#166534">✅ (마포국밥 판매함 국밥) 반영</text>
+  <text x="825" y="340" text-anchor="middle" font-size="12" fill="#dc2626">⛔ (합정동 판매함 크로플) 거부</text>
+  <text x="825" y="358" text-anchor="middle" font-size="11" fill="#7f1d1d">판매함 domain=음식점 → 합정동이 음식점</text>
+  <text x="825" y="374" text-anchor="middle" font-size="11" fill="#7f1d1d">음식점 ⟂ 지역 → 모순</text>
+
+  <!-- rules table -->
+  <rect x="60" y="416" width="870" height="168" rx="10" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="80" y="440" font-size="14" font-weight="700" fill="#1f2937">Reasoner.rules — 전방 연쇄(forward chaining) 7규칙</text>
+  <g font-size="12" fill="#374151">
+    <text x="80" y="464">하위클래스 전이  A⊂B, B⊂C ⇒ A⊂C</text>
+    <text x="80" y="484">타입 상속  x∈A, A⊂B ⇒ x∈B</text>
+    <text x="80" y="504">domain 추론  p domain C, x p y ⇒ x∈C</text>
+    <text x="80" y="524">range 추론  p range C, x p y ⇒ y∈C (리터럴 제외)</text>
+    <text x="500" y="464">전이 관계  p Transitive, x p y, y p z ⇒ x p z</text>
+    <text x="500" y="484">대칭 관계  p Symmetric, x p y ⇒ y p x</text>
+    <text x="500" y="504">역관계  p inverseOf q, x p y ⇒ y q x (양방향)</text>
+    <text x="500" y="524" fill="#6b7280">MCP 도구: ontology_query · ontology_explain · ontology_add_fact</text>
+  </g>
+  <text x="80" y="560" font-size="12" fill="#6b7280">코드: Core/Ontology.swift (TripleStore, Reasoner, Validator, Query) · Core/OntologyMCPBridge.swift (OntologyService actor) · Core/OntologyDemo.swift (예시 데이터)</text>
+</svg>

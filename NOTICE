@@ -1,0 +1,14 @@
+Harness Lab (하네스 랩)
+Copyright 2026 Coulson
+
+This product includes software developed as a learning project that
+implements, in simplified form, the following publicly specified ideas:
+
+- Model Context Protocol (MCP), JSON-RPC 2.0 based tool protocol.
+  The implementation here is an educational re-implementation, not the
+  official SDK. See https://modelcontextprotocol.io
+- RDF / RDFS / OWL style ontology concepts (rdf:type, rdfs:subClassOf,
+  rdfs:domain, rdfs:range, owl:inverseOf, owl:TransitiveProperty,
+  owl:SymmetricProperty, owl:disjointWith) in reduced form.
+
+Licensed under the Apache License, Version 2.0.

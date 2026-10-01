@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', Helvetica, Arial, sans-serif">
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#1f2937">하네스 랩 — 세 개의 층과 화면의 세 칸</text>
+
+  <!-- UI pane labels -->
+  <g font-size="13" fill="#6b7280">
+    <text x="190" y="72" text-anchor="middle">왼쪽 칸 · 하네스(채팅)</text>
+    <text x="480" y="72" text-anchor="middle">가운데 칸 · MCP 와이어</text>
+    <text x="770" y="72" text-anchor="middle">오른쪽 칸 · 온톨로지</text>
+  </g>
+
+  <!-- Layer 1: Harness -->
+  <rect x="40" y="86" width="300" height="330" rx="14" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="190" y="116" text-anchor="middle" font-size="17" font-weight="700" fill="#3730a3">① 하네스 (Agent Harness)</text>
+  <g font-size="13" fill="#1f2937">
+    <rect x="60" y="134" width="260" height="46" rx="8" fill="#ffffff" stroke="#c7d2fe"/>
+    <text x="190" y="153" text-anchor="middle" font-weight="600">LanguageModel (교체 가능)</text>
+    <text x="190" y="171" text-anchor="middle" fill="#6b7280">ScriptedModel · OnDeviceLanguageModel</text>
+
+    <rect x="60" y="192" width="260" height="92" rx="8" fill="#ffffff" stroke="#c7d2fe"/>
+    <text x="190" y="212" text-anchor="middle" font-weight="600">AgentHarness.run — 에이전트 루프</text>
+    <text x="75" y="233">① 생각  ② 종료 판정</text>
+    <text x="75" y="251">③ 행동(권한 훅 → MCP)  ④ 관찰</text>
+    <text x="75" y="271" fill="#6b7280">maxSteps · compactIfNeeded</text>
+
+    <rect x="60" y="296" width="260" height="46" rx="8" fill="#ffffff" stroke="#c7d2fe"/>
+    <text x="190" y="315" text-anchor="middle" font-weight="600">PermissionHook</text>
+    <text x="190" y="333" text-anchor="middle" fill="#6b7280">delete_* 거부 · add_fact 사용자 승인</text>
+
+    <rect x="60" y="354" width="260" height="46" rx="8" fill="#ffffff" stroke="#c7d2fe"/>
+    <text x="190" y="373" text-anchor="middle" font-weight="600">MCPClient</text>
+    <text x="190" y="391" text-anchor="middle" fill="#6b7280">도구 이름 → 서버 라우팅, id 짝짓기</text>
+  </g>
+
+  <!-- Layer 2: MCP -->
+  <rect x="330" y="86" width="300" height="330" rx="14" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="480" y="116" text-anchor="middle" font-size="17" font-weight="700" fill="#065f46">② MCP (Model Context Protocol)</text>
+  <g font-size="13" fill="#1f2937">
+    <rect x="350" y="134" width="260" height="60" rx="8" fill="#ffffff" stroke="#a7f3d0"/>
+    <text x="480" y="154" text-anchor="middle" font-weight="600">봉투 · JSON-RPC 2.0</text>
+    <text x="480" y="173" text-anchor="middle" fill="#6b7280">id / method / params / result / error</text>
+    <text x="480" y="188" text-anchor="middle" fill="#6b7280">_meta에 프로토콜 버전 (무상태)</text>
+
+    <rect x="350" y="206" width="260" height="60" rx="8" fill="#ffffff" stroke="#a7f3d0"/>
+    <text x="480" y="226" text-anchor="middle" font-weight="600">운반 · Transport</text>
+    <text x="480" y="245" text-anchor="middle" fill="#6b7280">InMemory(데모) · stdio · Streamable HTTP</text>
+    <text x="480" y="260" text-anchor="middle" fill="#6b7280">C→S 요청, S→C 응답</text>
+
+    <rect x="350" y="278" width="260" height="60" rx="8" fill="#ffffff" stroke="#a7f3d0"/>
+    <text x="480" y="298" text-anchor="middle" font-weight="600">어휘 · 메서드</text>
+    <text x="480" y="317" text-anchor="middle" fill="#6b7280">server/discover · tools/list · tools/call</text>
+    <text x="480" y="332" text-anchor="middle" fill="#6b7280">tools/list = LLM이 보는 도구 설명서</text>
+
+    <rect x="350" y="350" width="260" height="50" rx="8" fill="#ffffff" stroke="#a7f3d0"/>
+    <text x="480" y="370" text-anchor="middle" font-weight="600">MCPServer (demo-server)</text>
+    <text x="480" y="389" text-anchor="middle" fill="#6b7280">get_weather · delete_note · ontology_*</text>
+  </g>
+
+  <!-- Layer 3: Ontology -->
+  <rect x="620" y="86" width="300" height="330" rx="14" fill="#fff7ed" stroke="#f59e0b" stroke-width="2"/>
+  <text x="770" y="116" text-anchor="middle" font-size="17" font-weight="700" fill="#92400e">③ 온톨로지 (Ontology)</text>
+  <g font-size="13" fill="#1f2937">
+    <rect x="640" y="134" width="260" height="46" rx="8" fill="#ffffff" stroke="#fde68a"/>
+    <text x="770" y="153" text-anchor="middle" font-weight="600">TripleStore</text>
+    <text x="770" y="171" text-anchor="middle" fill="#6b7280">(주어 술어 목적어) + 인덱스 3개 + Proof</text>
+
+    <rect x="640" y="192" width="260" height="46" rx="8" fill="#ffffff" stroke="#fde68a"/>
+    <text x="770" y="211" text-anchor="middle" font-weight="600">스키마 (TBox) — 역시 트리플</text>
+    <text x="770" y="229" text-anchor="middle" fill="#6b7280">subClassOf · domain · range · Transitive …</text>
+
+    <rect x="640" y="250" width="260" height="46" rx="8" fill="#ffffff" stroke="#fde68a"/>
+    <text x="770" y="269" text-anchor="middle" font-weight="600">Reasoner — 전방 연쇄 7규칙</text>
+    <text x="770" y="287" text-anchor="middle" fill="#6b7280">고정점까지 반복 · 근거 기록(explain)</text>
+
+    <rect x="640" y="308" width="260" height="46" rx="8" fill="#ffffff" stroke="#fde68a"/>
+    <text x="770" y="327" text-anchor="middle" font-weight="600">Query · Validator</text>
+    <text x="770" y="345" text-anchor="middle" fill="#6b7280">?변수 패턴 조인 · disjointWith 모순 탐지</text>
+
+    <rect x="640" y="366" width="260" height="36" rx="8" fill="#ffffff" stroke="#fde68a"/>
+    <text x="770" y="389" text-anchor="middle" font-weight="600">OntologyService (actor) → MCP 도구 3개</text>
+  </g>
+
+  <!-- arrows between layers -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#374151"/>
+    </marker>
+  </defs>
+  <line x1="320" y1="377" x2="350" y2="377" stroke="#374151" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="610" y1="377" x2="640" y2="384" stroke="#374151" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- bottom caption -->
+  <rect x="40" y="436" width="880" height="62" rx="10" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="480" y="461" text-anchor="middle" font-size="14" fill="#1f2937" font-weight="600">LLM은 "이 도구를 이 인자로 불러줘"라는 JSON만 낸다. 실행·권한·기억은 하네스, 운반은 MCP, 사실 확인과 검증은 온톨로지의 몫.</text>
+  <text x="480" y="484" text-anchor="middle" font-size="13" fill="#6b7280">Core/Harness.swift · Core/MCP.swift · Core/Ontology.swift · Core/OntologyMCPBridge.swift · App/AppModel.swift(조립)</text>
+</svg>
