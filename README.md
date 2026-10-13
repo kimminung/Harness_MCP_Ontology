@@ -1,5 +1,9 @@
 # 하네스 랩 (Harness Lab)
 
+
+https://github.com/user-attachments/assets/e827c341-c741-400f-ae46-bb4c9dd13067
+
+
 > **LLM은 "이 도구를 이 인자로 불러줘"라는 JSON만 낸다. 실행·권한·기억은 하네스, 운반은 MCP, 사실 확인과 검증은 온톨로지의 몫.**
 > 이 세 문장을 한 화면에서 눈으로 확인하는 교육용 Swift 앱입니다.
 
